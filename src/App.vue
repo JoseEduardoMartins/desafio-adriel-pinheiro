@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { getRepositoriesByUser, getLocation } from './services/app';
+import { getRepositoriesByUser, getWeather } from './services/app';
 import HeaderVue from './components/HeaderVue';
 import SubHeaderVue from './components/SubHeaderVue';
 import RepositoriesVue from './components/RepositoriesVue';
@@ -27,26 +27,31 @@ export default {
       this.repositories = [];
       this.messageError = '';
 
-      if (!username.length) return this.messageError = 'Nome de usuario indefinido.';
+      if (!username.length) return this.messageError = 'Nome de usuário indefinido.';
 
       const result = await getRepositoriesByUser(username);
 
       if (result.status == 200) {
         const repositories = result.data;
 
-        if(!repositories.length) return this.messageError = 'Usuario não tem repositorios.';
+        if(!repositories.length) return this.messageError = 'Usuário não tem repositórios.';
         
         this.repositories = repositories;
-      }
-
-      if(result.status == 404)
-        this.messageError = 'Usuario inexistente!';
+      } else if(result.status == 404)
+        this.messageError = 'Usuário não foi encontrado.';
     }
   },
   async mounted () {
-      const { current } = await getLocation();
+    document.getElementById('name').focus();
+    
+    const result = await getWeather();
+    
+    if (result.status == 200) {
+      const { current } = result.data;
       this.humidity = current.humidity;
       this.temperature = Math.trunc(current.temp);
+    }
+    else this.messageError = `${result.status} Error - ${result.statusText}`;
   },
   components: {
     HeaderVue,

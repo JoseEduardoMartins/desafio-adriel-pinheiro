@@ -1,7 +1,7 @@
 <template>
     <header>
       <div class="item">
-        <input type="text" v-model="username" placeholder="Digite o nome do usuario">
+        <input id="name" type="text" v-model="username" placeholder="Digite o nome do usuario" autocomplete="off">
         <button @click="this.$emit('findRepositories', this.username)">Pesquisar</button>
       </div>
     </header>

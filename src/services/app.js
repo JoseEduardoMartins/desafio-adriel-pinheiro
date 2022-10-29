@@ -9,13 +9,13 @@ export const getRepositoriesByUser = async (name) => {
     .catch((error) => error.response);
 };
 
-export const getLocation = async () => {
+export const getWeather = async () => {
   const position = await getPosition();
 
   return await api_openweathermap
     .get(`/data/3.0/onecall?lat=${position.latitude}&lon=${position.longitude}&units=metric&appid=${config.openweathermap_id}`)
-    .then((response) => response.data)
-    .catch((error) => error.response.data);
+    .then((response) => response)
+    .catch((error) => error.response);
 };
 
 const getPosition = async () => {
