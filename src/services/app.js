@@ -1,3 +1,4 @@
+import config from '../config/config';
 import api_github from "./api-github";
 import api_openweathermap from "./api-openweathermap";
 
@@ -12,7 +13,7 @@ export const getLocation = async () => {
   const position = await getPosition();
 
   return await api_openweathermap
-    .get(`/data/3.0/onecall?lat=${position.latitude}&lon=${position.longitude}&units=metric&appid=a15d87ce0e96c7df09e3e0a8285967a9`)
+    .get(`/data/3.0/onecall?lat=${position.latitude}&lon=${position.longitude}&units=metric&appid=${config.openweathermap_id}`)
     .then((response) => response.data)
     .catch((error) => error.response.data);
 };
