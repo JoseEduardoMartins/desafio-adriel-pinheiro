@@ -4,7 +4,7 @@
         <p>Estado: {{state}}</p>
     </div>
     <div class="container_item">
-        <p>Temperatura: {{temperature}}ºC</p>
+        <p>Temperatura: {{temperature}} ºC</p>
     </div>
   </div>
 </template>

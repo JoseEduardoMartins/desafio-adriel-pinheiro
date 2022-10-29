@@ -46,7 +46,7 @@ export default {
   async mounted () {
       const { timezone, current } = await getLocation();
       this.state = timezone.split('/')[1].replace("_", " ");
-      this.temperature = current.temp;
+      this.temperature = Math.trunc(current.temp);
   },
   components: {
     HeaderVue,
