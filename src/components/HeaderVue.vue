@@ -1,34 +1,41 @@
 <template>
-    <header>
-      <div class="item">
-        <input id="name" type="text" v-model="username" placeholder="Digite o nome do usuario" autocomplete="off">
-        <button @click="this.$emit('findRepositories', this.username)">Pesquisar</button>
-      </div>
-    </header>
+  <header>
+    <div class="item">
+      <input
+        id="name"
+        type="text"
+        v-model="username"
+        placeholder="Digite o nome do usuario"
+        autocomplete="off"
+      />
+      <button @click="this.$emit('findRepositories', this.username)">
+        Pesquisar
+      </button>
+    </div>
+  </header>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      username: ''
-    }
+      username: "",
+    };
   },
-
-}
+};
 </script>
 
 <style scoped>
-header{
-    width: 100%;
-    height: 65px;
-    background-color: #0d1117;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 1px solid #30363d;
+header {
+  width: 100%;
+  height: 65px;
+  background-color: #0d1117;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #30363d;
 }
-.item{
+.item {
   width: 300px;
   display: flex;
 }
@@ -41,12 +48,12 @@ input {
   background-color: #0d1117;
   border: 1px solid #30363d;
 }
-input:focus{
-    box-shadow: 0 0 0 0;
-    border: 1px solid #30363d;
-    outline: 0;
+input:focus {
+  box-shadow: 0 0 0 0;
+  border: 1px solid #30363d;
+  outline: 0;
 }
-button{
+button {
   width: 100px;
   cursor: pointer;
   color: white;
