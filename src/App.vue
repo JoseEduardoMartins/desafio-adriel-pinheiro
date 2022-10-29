@@ -39,7 +39,7 @@ export default {
   },
   async mounted () {
       const { timezone, current } = await getLocation();
-      this.state = timezone;
+      this.state = timezone.split('/')[1].replace("_", " ");
       this.temperature = current.temp;
   },
   components: {
