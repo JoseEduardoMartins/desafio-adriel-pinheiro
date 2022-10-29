@@ -1,6 +1,6 @@
 <template>
   <HeaderVue @findRepositories="findRepositories" />
-  <SubHeaderVue :state="state" :temperature="temperature" />
+  <SubHeaderVue :humidity="humidity" :temperature="temperature" />
   <RepositoriesVue v-if="repositories.length" :repositories="repositories" />
   <ErrorVue v-else :message="messageError" />
 </template>
@@ -16,7 +16,7 @@ export default {
   data () {
     return {
       repositories: [],
-      state: '',
+      humidity: 0,
       temperature: 0,
       messageError: ''
     }
@@ -44,8 +44,8 @@ export default {
     }
   },
   async mounted () {
-      const { timezone, current } = await getLocation();
-      this.state = timezone.split('/')[1].replace("_", " ");
+      const { current } = await getLocation();
+      this.humidity = current.humidity;
       this.temperature = Math.trunc(current.temp);
   },
   components: {

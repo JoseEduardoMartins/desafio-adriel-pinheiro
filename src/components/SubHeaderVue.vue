@@ -1,7 +1,7 @@
 <template>
   <div class="conatiner">
     <div class="container_item">
-        <p>Estado: {{state}}</p>
+        <p>Umidade: {{humidity}} %</p>
     </div>
     <div class="container_item">
         <p>Temperatura: {{temperature}} ºC</p>
@@ -14,7 +14,7 @@ export default {
   name: 'SubHeaderVue',
   props: {
     temperature: Number,
-    state: String
+    humidity: Number
   }
 }
 </script>
