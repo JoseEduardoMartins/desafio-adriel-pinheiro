@@ -24,6 +24,9 @@ export default {
   name: 'App',
   methods: {
     async findRepositories (username) {
+      this.repositories = [];
+      this.messageError = '';
+
       if (!username.length) return alert("Nome de usuario indefinido")
 
       const result = await getRepositoriesByUser(username);
