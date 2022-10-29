@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div v-for="repository in repositories" :key="repository.id" class="container_item">
-      <a href="repository.">{{ repository.name }}</a>
+      <a class="link" :href="repository.html_url" target="_blank">{{ repository.name }}</a>
       <p>{{ repository.stargazers_count }} stars </p>
     </div>
   </div>
@@ -35,6 +35,13 @@ export default {
     display: flex;
     justify-content: space-between;
   }
+.link{
+    color: white;
+    text-decoration: none;
+}
+.link:hover {
+    text-decoration: underline;
+}
 @media (min-width: 700px) {
     .container_item{
       width: 25%;
