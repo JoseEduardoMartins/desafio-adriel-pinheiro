@@ -24,17 +24,19 @@ export default {
   name: 'App',
   methods: {
     async findRepositories (username) {
-      if (!username.length) return alert("Preencha o campo")
-      const repositories = await getRepositoriesByUser(username);
-      console.log(repositories);
+      if (!username.length) return alert("Nome de usuario indefinido")
 
-      if(!repositories.length) {
-        this.messageError = 'Usuario não tem repositorios';
-        this.repositories = [];
-        return
+      const result = await getRepositoriesByUser(username);
+
+      if (result.status == 200) {
+        const repositories = result.data;
+
+        if(!repositories.length) return this.messageError = 'Usuario não tem repositorios';
+        
+        this.repositories = repositories;
       }
-      this.messageError ='';
-      this.repositories = repositories;
+
+      if(result.status == 404) alert('Usuario inexistente!');
     }
   },
   async mounted () {

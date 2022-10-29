@@ -4,10 +4,8 @@ import api_openweathermap from "./api-openweathermap";
 export const getRepositoriesByUser = async (name) => {
   return await api_github
     .get(`/users/${name}/repos`)
-    .then((response) => response.data)
-    .catch((error) => {
-      if (error.response.status == 404) alert('Usuario inexistente!');
-    });
+    .then((response) => response)
+    .catch((error) => error.response);
 };
 
 export const getLocation = async () => {
