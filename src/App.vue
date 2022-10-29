@@ -35,8 +35,6 @@ export default {
         const repositories = result.data;
 
         if(!repositories.length) return this.messageError = 'Usuario não tem repositorios';
-
-        console.log(repositories[0].html_url);
         
         this.repositories = repositories;
       }
