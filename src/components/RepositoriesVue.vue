@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div v-for="repository in repositories" :key="repository.id" class="container_item">
-      <p>{{ repository.name }}</p>
+      <a href="repository.">{{ repository.name }}</a>
       <p>{{ repository.stargazers_count }} stars </p>
     </div>
   </div>

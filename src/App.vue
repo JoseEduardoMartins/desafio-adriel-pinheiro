@@ -32,11 +32,14 @@ export default {
         const repositories = result.data;
 
         if(!repositories.length) return this.messageError = 'Usuario não tem repositorios';
+
+        console.log(repositories[0]);
         
         this.repositories = repositories;
       }
 
-      if(result.status == 404) alert('Usuario inexistente!');
+      if(result.status == 404)
+        this.messageError = 'Usuario inexistente!';
     }
   },
   async mounted () {
