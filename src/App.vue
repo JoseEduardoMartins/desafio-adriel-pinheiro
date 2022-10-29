@@ -27,14 +27,14 @@ export default {
       this.repositories = [];
       this.messageError = '';
 
-      if (!username.length) return alert("Nome de usuario indefinido")
+      if (!username.length) return this.messageError = 'Nome de usuario indefinido.';
 
       const result = await getRepositoriesByUser(username);
 
       if (result.status == 200) {
         const repositories = result.data;
 
-        if(!repositories.length) return this.messageError = 'Usuario não tem repositorios';
+        if(!repositories.length) return this.messageError = 'Usuario não tem repositorios.';
         
         this.repositories = repositories;
       }
