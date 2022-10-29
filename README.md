@@ -1,4 +1,5 @@
 # desafio-adriel-pinheiro
+Project that provides data from the github api and the openweathermap api.
 
 ## Project setup
 ```
