@@ -26,6 +26,8 @@ const getPosition = async () => {
       (position) => {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
+        console.log(latitude);
+        console.log(longitude);
 
         resolve({ latitude, longitude });
       },
